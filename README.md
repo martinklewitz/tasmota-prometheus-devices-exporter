@@ -10,6 +10,29 @@ This a prometheus exporter for Tasmota devices.
 
 # Running the image
 
+## Example docker compose
+
+#Parameters:
+- EXPORTER_PORT: port of prometheus exporter
+- DEVICE_IPS: list of precifigured device IPs, (comma seperated)
+- DISCOVER_TASMOTAS: should tasmota divices be autodiscovered
+- DISCOVER_RANGE: subnet of IPs where exporter shoudld try to discover devices
+
+```
+version: "3.0"
+services:
+  tasmota-prometheus-devices-exporter:
+    image: ghcr.io/martinklewitz/tasmota-prometheus-devices-exporter:latest
+    restart: always
+    ports:
+      - 9099:8000
+    environment:
+      - EXPORTER_PORT=8000
+      - DEVICE_IPS=192.168.178.85
+      - DISCOVER_TASMOTAS=True
+      - DISCOVER_RANGE=192.168.178.
+
+```
 
 
 # Recognition

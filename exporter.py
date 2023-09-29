@@ -60,12 +60,10 @@ class TasmotaCollector(object):
         return found_tasmotas
 
     def collect(self):
-
         all_ips = self.ips.split(",")
 
         for ip in all_ips:
             response = self.fetch(ip)
-
             for key in response:
                 metric_name = "tasmota_" + key.lower().replace(" ", "_")
                 metric = response[key].split()[0]
