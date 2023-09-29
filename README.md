@@ -14,8 +14,8 @@ This a prometheus exporter for Tasmota devices.
 
 #Parameters:
 - EXPORTER_PORT: port of prometheus exporter
-- DEVICE_IPS: list of precifigured device IPs, (comma seperated)
-- DISCOVER_TASMOTAS: should tasmota divices be autodiscovered
+- DEVICE_IPS: list of preconfigured device IPs (comma seperated)
+- DISCOVER_TASMOTAS: (True|False) should tasmota divices be autodiscovered
 - DISCOVER_RANGE: subnet of IPs where exporter shoudld try to discover devices
 
 ```
