@@ -81,12 +81,16 @@ class TasmotaCollector(object):
     def fetch(self, target_ip):
         url = 'http://' + target_ip + '/?m=1'
         session = requests.Session()
+        extract_values = []
         if self.user and self.password:
             session.auth = (self.user, self.password)
-
-        page = session.get(url=url, timeout=4)
-        text = page.text
-        return self.extract_values(text)
+        try:
+            page = session.get(url=url, timeout=4)
+            text = page.text
+            extract_values = self.extract_values(text)
+        except:
+            return extract_values
+        return extract_values
 
     def extract_values(self, text):
         values = {}

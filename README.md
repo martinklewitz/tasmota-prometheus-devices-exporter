@@ -12,7 +12,7 @@ This a prometheus exporter for Tasmota devices.
 
 ## Example docker compose
 
-#Parameters:
+### Parameters:
 - EXPORTER_PORT: port of prometheus exporter
 - DEVICE_IPS: list of preconfigured device IPs (comma seperated)
 - DISCOVER_TASMOTAS: (True|False) should tasmota divices be autodiscovered
