@@ -131,6 +131,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 if __name__ == '__main__':
 
+    print("starting exporter")
     port = getenv('EXPORTER_PORT')
     if not port:
         port = 8000
