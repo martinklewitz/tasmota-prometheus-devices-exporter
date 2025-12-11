@@ -65,7 +65,7 @@ class TasmotaCollector(object):
         for ip in all_ips:
             response = self.fetch(ip)
             for key in response:
-                metric_name = "tasmota_" + key.lower().replace(" ", "_")
+                metric_name = "tasmota_" + self.replace_chars(key)
                 metric = response[key].split()[0]
                 unit = None
                 if len(response[key].split()) > 1:
@@ -77,6 +77,21 @@ class TasmotaCollector(object):
                     r = GaugeMetricFamily(metric_name, key, labels=['device'], unit=unit)
                 r.add_metric([ip], metric)
                 yield r
+
+    def replace_chars(self, key) -> Any:
+        replacements = {
+            "ä": "ae",
+            "ö": "oe",
+            "ü": "ue",
+            "ß": "ss",
+            "Ä": "Ae",
+            "Ö": "Oe",
+            "Ü": "Ue"
+        }
+        result = key.lower()
+        for umlaut, replacement in replacements.items():
+            result = result.replace(umlaut, replacement)
+        return result.replace(" ", "_")
 
     def fetch(self, target_ip):
         url = 'http://' + target_ip + '/?m=1'
