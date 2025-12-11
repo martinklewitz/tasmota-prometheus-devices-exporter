@@ -27,6 +27,7 @@ services:
     ports:
       - 9099:8000
     environment:
+      - PYTHONUNBUFFERED=1
       - EXPORTER_PORT=8000
       - DEVICE_IPS=192.168.178.85
       - DISCOVER_TASMOTAS=True

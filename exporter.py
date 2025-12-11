@@ -86,7 +86,9 @@ class TasmotaCollector(object):
             "ß": "ss",
             "Ä": "Ae",
             "Ö": "Oe",
-            "Ü": "Ue"
+            "Ü": "Ue",
+            "ã¤": "ae",
+            ":": "_",
         }
         result = key.lower()
         for umlaut, replacement in replacements.items():
